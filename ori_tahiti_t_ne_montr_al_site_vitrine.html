@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'Ori Tahiti Tāne Montréal — Force, Mana & Fraternité</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel, Oswald et Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Oswald:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        volcanic: '#111111',
+                        charcoal: '#1A1918',
+                        parchment: '#F5F2EB',
+                        ember: '#C83E2B',
+                        emberDark: '#9E2B1B',
+                        ochre: '#D98A2B',
+                        tikiAsh: '#2A2826'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        oswald: ['Oswald', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Textures et motifs polynésiens subtils */
+        body {
+            background-color: #111111;
+            color: #F5F2EB;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Frise géométrique polynésienne (dents de requin / niho mano & tiki) */
+        .polynesian-border {
+            height: 18px;
+            width: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='18' viewBox='0 0 40 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 18 L10 2 L20 18 Z M20 18 L30 2 L40 18 Z' fill='none' stroke='%23D98A2B' stroke-opacity='0.35' stroke-width='1.5'/%3E%3Ccircle cx='10' cy='13' r='1.5' fill='%23C83E2B' fill-opacity='0.6'/%3E%3Ccircle cx='30' cy='13' r='1.5' fill='%23C83E2B' fill-opacity='0.6'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+
+        .polynesian-divider {
+            height: 24px;
+            width: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='24' viewBox='0 0 60 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 12 L15 2 L30 12 L15 22 Z M30 12 L45 2 L60 12 L45 22 Z' fill='none' stroke='%23F5F2EB' stroke-opacity='0.14' stroke-width='1.5'/%3E%3Cpath d='M15 7 L20 12 L15 17 L10 12 Z M45 7 L50 12 L45 17 L40 12 Z' fill='%23C83E2B' fill-opacity='0.45'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+        }
+
+        /* Effet de halo de braise derrière le logo */
+        .ember-glow {
+            box-shadow: 0 0 45px rgba(200, 62, 43, 0.25), 0 0 15px rgba(217, 138, 43, 0.15);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #33302D;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C83E2B;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-ember selection:text-parchment">
+
+    <!-- =====================================================================
+         1. EN-TÊTE (NAVBAR)
+    ====================================================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-volcanic/90 backdrop-blur-md border-b border-parchment/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Identité / Logo SVG inspiré du logo fourni -->
+                <a href="#accueil" class="flex items-center gap-3.5 group">
+                    <div class="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-parchment p-0.5 border-2 border-ochre/70 shadow-lg group-hover:scale-105 transition-transform duration-300 flex items-center justify-center overflow-hidden">
+                        <!-- Emblème vectoriel fidèle au logo circulaire : Tiki guerrier, flammes & motif tribal -->
+                        <svg viewBox="0 0 120 120" class="w-full h-full">
+                            <circle cx="60" cy="60" r="56" fill="#F5F2EB" stroke="#111111" stroke-width="3"/>
+                            <circle cx="60" cy="60" r="47" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="4 3"/>
+                            <!-- Flammes derrière l'épaule -->
+                            <path d="M48 48 C35 42, 26 32, 24 22 C31 28, 37 29, 43 34 C38 25, 36 18, 38 12 C43 20, 47 26, 52 34 Z" fill="#C83E2B"/>
+                            <path d="M47 45 C39 40, 33 34, 32 27 C37 31, 41 32, 46 36 Z" fill="#D98A2B"/>
+                            <!-- Silhouette Guerrier Tāne -->
+                            <circle cx="61" cy="31" r="6.5" fill="#111111"/>
+                            <!-- Chignon (Tiki) -->
+                            <circle cx="56" cy="24" r="3" fill="#111111"/>
+                            <!-- Torse puissant -->
+                            <path d="M47 41 Q61 38 75 41 L71 63 L51 63 Z" fill="#111111"/>
+                            <!-- Tatouages pectoraux rouges -->
+                            <path d="M51 44 Q58 43 60 50 Q54 52 51 48 Z" fill="#C83E2B"/>
+                            <path d="M71 44 Q64 43 62 50 Q68 52 71 48 Z" fill="#C83E2B"/>
+                            <!-- Bras en garde -->
+                            <path d="M47 42 L38 54 L45 61" fill="none" stroke="#111111" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M75 42 L84 52 L76 57" fill="none" stroke="#111111" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Pareo / Maro -->
+                            <path d="M50 62 L72 62 L76 76 L60 73 L44 76 Z" fill="#111111"/>
+                            <!-- Jambes fléchies (position Pa'oti / Haka) -->
+                            <path d="M51 73 L41 84 L45 96" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M71 73 L81 84 L77 96" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <!-- Lance (Omaha / Tao) -->
+                            <line x1="25" y1="64" x2="92" y2="57" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+                            <polygon points="20,64.5 29,61 29,67" fill="#111111"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="block font-cinzel font-extrabold text-sm sm:text-base tracking-wider text-parchment leading-tight">
+                            'ORI TAHITI TĀNE
+                        </span>
+                        <span class="block font-oswald text-xs tracking-[0.25em] text-ochre uppercase">
+                            Montréal • Québec
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navigation Desktop -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                    <a href="#esprit" class="text-parchment/80 hover:text-ochre transition-colors">Notre Esprit & Ra'atira</a>
+                    <a href="#galerie" class="text-parchment/80 hover:text-ochre transition-colors">Galerie</a>
+                    <a href="#forfaits" class="text-parchment/80 hover:text-ochre transition-colors">Forfaits</a>
+                    <a href="#inscription" class="text-parchment/80 hover:text-ochre transition-colors">Rejoindre le groupe</a>
+                </nav>
+
+                <!-- Bouton CTA & Menu Mobile -->
+                <div class="flex items-center gap-3">
+                    <a href="#inscription" class="inline-flex items-center gap-2 bg-ember hover:bg-emberDark text-parchment font-oswald uppercase tracking-wider text-sm px-5 py-2.5 rounded-lg shadow-lg shadow-ember/25 transition-all duration-200 hover:-translate-y-0.5">
+                        <span>S'inscrire</span>
+                        <i class="fa-solid fa-fire text-ochre text-xs"></i>
+                    </a>
+                    <button id="mobile-menu-btn" aria-label="Ouvrir le menu" class="md:hidden p-2.5 rounded-lg bg-charcoal border border-parchment/15 text-parchment hover:text-ochre">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile déroulant -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal border-b border-parchment/15 px-4 pt-3 pb-6 space-y-3">
+            <a href="#esprit" class="block py-2 px-3 rounded-lg text-parchment/90 hover:bg-volcanic hover:text-ochre font-medium">Notre Esprit & Lignée</a>
+            <a href="#galerie" class="block py-2 px-3 rounded-lg text-parchment/90 hover:bg-volcanic hover:text-ochre font-medium">Galerie Photos</a>
+            <a href="#forfaits" class="block py-2 px-3 rounded-lg text-parchment/90 hover:bg-volcanic hover:text-ochre font-medium">Forfaits & Adhésion</a>
+            <a href="#inscription" class="block py-2 px-3 rounded-lg text-parchment/90 hover:bg-volcanic hover:text-ochre font-medium">Formulaire d'inscription</a>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         2. SECTION HERO
+    ====================================================================== -->
+    <section id="accueil" class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+        <!-- Halo lumineux d'arrière-plan -->
+        <div class="absolute top-24 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-ember/15 rounded-full blur-[130px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-ochre/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                
+                <!-- Colonne Texte & Emblème -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <!-- Badge Autorisation Ra'atira -->
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-charcoal border border-ochre/40 text-xs sm:text-sm text-parchment/90 shadow-md">
+                        <span class="w-2 h-2 rounded-full bg-ember animate-pulse"></span>
+                        <span>Pratique culturelle autorisée sous la bienveillance de notre Ra'atira <strong class="text-ochre font-semibold">Val Nuimahani</strong></span>
+                    </div>
+
+                    <!-- Grand Titre -->
+                    <h1 class="font-cinzel font-black text-4xl sm:text-5xl lg:text-6xl text-parchment tracking-tight leading-[1.1]">
+                        'ORI TAHITI <span class="text-transparent bg-clip-text bg-gradient-to-r from-ember via-ochre to-parchment">TĀNE</span><br>
+                        MONTRÉAL
+                    </h1>
+
+                    <!-- Slogan -->
+                    <p class="font-oswald uppercase tracking-[0.18em] text-ochre text-base sm:text-lg">
+                        La force du guerrier • Le souffle du Mana • La fraternité au cœur du Québec
+                    </p>
+
+                    <p class="text-parchment/80 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Rejoignez le collectif masculin de danse traditionnelle polynésienne à Montréal. Entre frappes de <em class="text-parchment">pa'oti</em>, percussions vibrantes du <em class="text-parchment">tō'ere</em> et maniement ancestral de la lance, nous cultivons l'héritage vivant de Tahiti dans le respect et la solidarité.
+                    </p>
+
+                    <!-- Boutons d'action -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#forfaits" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-ember hover:bg-emberDark text-parchment font-oswald uppercase tracking-wider px-8 py-4 rounded-xl text-base shadow-xl shadow-ember/25 transition-all hover:-translate-y-0.5">
+                            <span>Découvrir les forfaits</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#inscription" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-charcoal hover:bg-tikiAsh border border-parchment/20 text-parchment font-oswald uppercase tracking-wider px-8 py-4 rounded-xl text-base transition-all">
+                            <i class="fa-solid fa-user-plus text-ochre"></i>
+                            <span>Danser avec nous</span>
+                        </a>
+                    </div>
+
+                    <!-- Repères rapides -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-parchment/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <div class="font-cinzel font-bold text-xl sm:text-2xl text-parchment">1x / Semaine</div>
+                            <div class="text-xs text-parchment/60 uppercase tracking-wider mt-0.5">Pratique Hebdomadaire</div>
+                        </div>
+                        <div>
+                            <div class="font-cinzel font-bold text-xl sm:text-2xl text-ochre">Montréal</div>
+                            <div class="text-xs text-parchment/60 uppercase tracking-wider mt-0.5">Entraînements & Scène</div>
+                        </div>
+                        <div>
+                            <div class="font-cinzel font-bold text-xl sm:text-2xl text-ember">Tous niveaux</div>
+                            <div class="text-xs text-parchment/60 uppercase tracking-wider mt-0.5">Débutants bienvenus</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne Visuelle : Carte d'identité & Emblème -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <div class="relative w-full max-w-md bg-charcoal/90 border border-parchment/15 rounded-3xl p-6 sm:p-8 ember-glow">
+                        <!-- Cadre décoratif supérieur -->
+                        <div class="flex items-center justify-between text-xs font-oswald tracking-widest text-parchment/50 uppercase mb-5">
+                            <span>Ia Ora Na</span>
+                            <span>•</span>
+                            <span>Mana & Respect</span>
+                        </div>
+
+                        <!-- Grand Emblème Circulaire inspiré du logo fourni -->
+                        <div class="relative mx-auto w-60 h-60 sm:w-72 sm:h-72 rounded-full bg-parchment p-2 border-4 border-ochre/80 shadow-2xl flex items-center justify-center">
+                            <svg viewBox="0 0 300 300" class="w-full h-full">
+                                <defs>
+                                    <path id="topArc" d="M 38,150 A 112,112 0 1,1 262,150" />
+                                </defs>
+                                <!-- Fond parchemin -->
+                                <circle cx="150" cy="150" r="144" fill="#F5F2EB" stroke="#111111" stroke-width="4"/>
+                                <!-- Texte courbé supérieur -->
+                                <text fill="#111111" font-family="Oswald, sans-serif" font-weight="700" font-size="21" letter-spacing="3.2">
+                                    <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+                                        'ORI TAHITI TĀNE MONTRÉAL
+                                    </textPath>
+                                </text>
+                                <!-- Anneau géométrique polynésien -->
+                                <circle cx="150" cy="158" r="102" fill="none" stroke="#111111" stroke-width="3"/>
+                                <circle cx="150" cy="158" r="84" fill="none" stroke="#111111" stroke-width="2.5"/>
+                                <circle cx="150" cy="158" r="93" fill="none" stroke="#111111" stroke-width="14" stroke-dasharray="6 6"/>
+
+                                <!-- Flammes du guerrier -->
+                                <path d="M126 135 C95 122, 72 98, 66 74 C85 88, 100 92, 114 102 C102 82, 96 64, 102 48 C115 68, 125 84, 136 104 Z" fill="#C83E2B"/>
+                                <path d="M124 128 C102 117, 87 100, 84 82 C98 92, 109 95, 121 104 Z" fill="#D98A2B"/>
+
+                                <!-- Tête et chignon Tiki -->
+                                <circle cx="152" cy="92" r="14" fill="#111111"/>
+                                <circle cx="141" cy="77" r="6.5" fill="#111111"/>
+
+                                <!-- Torse musclé -->
+                                <path d="M118 115 Q152 106 186 115 L176 168 L128 168 Z" fill="#111111"/>
+                                <!-- Tatouages pectoraux rouges -->
+                                <path d="M127 122 Q144 120 150 138 Q135 142 127 132 Z" fill="#C83E2B"/>
+                                <path d="M177 122 Q160 120 154 138 Q169 142 177 132 Z" fill="#C83E2B"/>
+
+                                <!-- Bras gauche & droit -->
+                                <path d="M118 118 L96 146 L114 162" fill="none" stroke="#111111" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M186 118 L208 142 L188 154" fill="none" stroke="#111111" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                <!-- Pareo / Maro -->
+                                <path d="M126 165 L178 165 L188 198 L152 190 L116 198 Z" fill="#111111"/>
+
+                                <!-- Jambes fléchies -->
+                                <path d="M130 192 L106 218 L116 244" fill="none" stroke="#111111" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M174 192 L198 218 L188 244" fill="none" stroke="#111111" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                <!-- Lance traditionnelle -->
+                                <line x1="68" y1="168" x2="232" y2="152" stroke="#111111" stroke-width="5.5" stroke-linecap="round"/>
+                                <polygon points="52,169.5 74,161 74,176" fill="#111111"/>
+                            </svg>
+                        </div>
+
+                        <div class="mt-6 text-center space-y-1.5">
+                            <p class="font-cinzel font-bold text-lg text-parchment">Collectif Masculin de Danse Tahitienne</p>
+                            <p class="text-xs text-parchment/70">Transmission légitimée par le Ra'atira <span class="text-ochre font-semibold">Val Nuimahani</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="polynesian-border"></div>
+
+    <!-- =====================================================================
+         3. À PROPOS / NOTRE ESPRIT & LIGNÉE (RA'ATIRA VAL NUIMAHANI)
+    ====================================================================== -->
+    <section id="esprit" class="py-20 lg:py-28 bg-charcoal/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- En-tête de section -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="font-oswald uppercase tracking-[0.25em] text-ember text-sm font-semibold">Notre Identité & Notre Lignée</span>
+                <h2 class="font-cinzel font-bold text-3xl sm:text-4xl lg:text-5xl text-parchment mt-2">
+                    L'Esprit du Guerrier <span class="text-ochre">Tāne</span>
+                </h2>
+                <p class="text-parchment/75 mt-4 text-base sm:text-lg leading-relaxed">
+                    À Montréal, notre groupe réunit des hommes animés par la passion de la culture polynésienne, le dépassement physique et le respect profond des traditions du Fenua.
+                </p>
+            </div>
+
+            <!-- Grille Piliers + Encart Kunu Val Nuimahani -->
+            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- 3 Piliers de la pratique -->
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <!-- Carte 1 -->
+                    <div class="bg-volcanic border border-parchment/10 rounded-2xl p-6 hover:border-ochre/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-ember/15 border border-ember/30 flex items-center justify-center text-ember text-xl mb-4">
+                            <i class="fa-solid fa-fire-flame-curved"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment mb-2">Puissance & Pa'oti</h3>
+                        <p class="text-sm text-parchment/75 leading-relaxed">
+                            Apprentissage des postures ancrées au sol, des battements de genoux (<em class="text-parchment">pa'oti</em>), des frappes thoraciques et des cris guerriers (<em class="text-parchment">tu'e</em>) porteurs de <em class="text-ochre">Mana</em>.
+                        </p>
+                    </div>
+
+                    <!-- Carte 2 -->
+                    <div class="bg-volcanic border border-parchment/10 rounded-2xl p-6 hover:border-ochre/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-ochre/15 border border-ochre/30 flex items-center justify-center text-ochre text-xl mb-4">
+                            <i class="fa-solid fa-khanda"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment mb-2">Maniement de la Lance</h3>
+                        <p class="text-sm text-parchment/75 leading-relaxed">
+                            Maîtrise chorégraphique et martiale de la lance traditionnelle en bambou et fibres naturelles, symbole de protection, de précision et de discipline collective.
+                        </p>
+                    </div>
+
+                    <!-- Carte 3 -->
+                    <div class="bg-volcanic border border-parchment/10 rounded-2xl p-6 hover:border-ochre/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-ember/15 border border-ember/30 flex items-center justify-center text-ember text-xl mb-4">
+                            <i class="fa-solid fa-drum"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment mb-2">Rythme & Percussions</h3>
+                        <p class="text-sm text-parchment/75 leading-relaxed">
+                            Synchronisation totale avec les pulsations rapides des <em class="text-parchment">tō'ere</em> et des <em class="text-parchment">pahu</em> pour raconter les légendes et les récits héroïques de Polynésie.
+                        </p>
+                    </div>
+
+                    <!-- Carte 4 -->
+                    <div class="bg-volcanic border border-parchment/10 rounded-2xl p-6 hover:border-ochre/40 transition-colors">
+                        <div class="w-12 h-12 rounded-xl bg-ochre/15 border border-ochre/30 flex items-center justify-center text-ochre text-xl mb-4">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment mb-2">Rendez-vous Hebdomadaire</h3>
+                        <p class="text-sm text-parchment/75 leading-relaxed">
+                            Nous dansons <strong class="text-parchment">1 fois par semaine</strong> à Montréal : un rendez-vous régulier de fraternité, de conditionnement physique et de partage culturel ouvert à tous les hommes motivés.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Encart Hommage au Ra'atira Val Nuimahani -->
+                <div class="lg:col-span-5">
+                    <div class="h-full bg-gradient-to-b from-tikiAsh to-volcanic border-2 border-ochre/40 rounded-3xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden shadow-2xl">
+                        <!-- Filigrane décoratif -->
+                        <div class="absolute -right-8 -bottom-8 text-parchment/[0.03] text-9xl pointer-events-none">
+                            <i class="fa-solid fa-sun"></i>
+                        </div>
+
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-ochre/20 border border-ochre/40 text-ochre font-oswald text-xs uppercase tracking-widest mb-5">
+                                <i class="fa-solid fa-award"></i>
+                                <span>Autorisation & Légitimité Culturelle</span>
+                            </div>
+
+                            <h3 class="font-cinzel font-bold text-2xl sm:text-3xl text-parchment leading-snug">
+                                Sous la bénédiction de notre Ra'atira<br>
+                                <span class="text-ochre">Val Nuimahani</span>
+                            </h3>
+
+                            <div class="w-16 h-1 bg-ember rounded-full my-5"></div>
+
+                            <p class="text-parchment/85 text-sm sm:text-base leading-relaxed mb-4">
+                                Dans la tradition polynésienne, la danse sacrée et guerrière ne s'improvise pas : elle se reçoit, se respecte et se transmet avec autorisation.
+                            </p>
+
+                            <p class="text-parchment/75 text-sm sm:text-base leading-relaxed">
+                                Notre groupe <strong class="text-parchment">'Ori Tahiti Tāne Montréal</strong> a l'honneur et la responsabilité de pratiquer et de faire rayonner cet art vivant grâce à l'accord et à la transmission de notre Ra'atira, <strong class="text-ochre">Val Nuimahani</strong>. Chaque pas, chaque chant et chaque tenue porte la marque de cet engagement envers l'authenticité culturelle.
+                            </p>
+                        </div>
+
+                        <div class="mt-8 pt-5 border-t border-parchment/15 flex items-center justify-between">
+                            <div>
+                                <span class="block text-xs uppercase tracking-wider text-parchment/50">Référent & Ra'atira</span>
+                                <span class="font-cinzel font-bold text-lg text-parchment">Val Nuimahani</span>
+                            </div>
+                            <span class="px-3 py-1.5 rounded-full bg-volcanic border border-parchment/15 text-xs text-ochre font-medium">
+                                Māuruuru Roa
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="polynesian-divider"></div>
+
+    <!-- =====================================================================
+         4. GALERIE PHOTOS (PUBLIC ÉPURÉ + BARRE OUTILS ADMIN PRIVÉE)
+    ====================================================================== -->
+    <section id="galerie" class="py-20 lg:py-28 bg-volcanic">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- En-tête -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="font-oswald uppercase tracking-[0.25em] text-ochre text-sm font-semibold">Nos Tenues & Moments Forts</span>
+                    <h2 class="font-cinzel font-bold text-3xl sm:text-4xl lg:text-5xl text-parchment mt-2">
+                        Galerie des <span class="text-ember">Guerriers</span>
+                    </h2>
+                    <p class="text-parchment/75 mt-3 max-w-2xl text-sm sm:text-base">
+                        Découvrez nos danseurs en tenue traditionnelle avec pareo noir, couronnes de coquillages, feuillages et lances lors de nos pratiques hebdomadaires et représentations.
+                    </p>
+                </div>
+
+                <!-- Badge discret indiquant si le mode admin est actif -->
+                <div id="admin-gallery-badge" class="hidden items-center gap-2 px-4 py-2 rounded-xl bg-ember/20 border border-ember text-xs font-oswald uppercase tracking-wider text-parchment">
+                    <i class="fa-solid fa-unlock-keyhole text-ochre"></i>
+                    <span>Mode Admin Actif</span>
+                </div>
+            </div>
+
+            <!-- PANNEAU ADMINISTRATEUR GALERIE (Masqué aux visiteurs publics) -->
+            <div id="admin-gallery-panel" class="hidden mb-10 bg-charcoal border-2 border-ochre/50 rounded-2xl p-6 shadow-2xl space-y-5">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-parchment/15 pb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-ochre/20 border border-ochre flex items-center justify-center text-ochre">
+                            <i class="fa-solid fa-camera-retro"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-cinzel font-bold text-lg text-parchment">Gestion Privée de la Galerie</h3>
+                            <p class="text-xs text-parchment/65">Ajoutez ou supprimez vos photos (sauvegarde automatique dans votre navigateur).</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <button type="button" onclick="exportSiteData()" class="px-3.5 py-2 rounded-lg bg-volcanic hover:bg-tikiAsh border border-parchment/20 text-xs text-parchment/85 flex items-center gap-1.5 transition-colors">
+                            <i class="fa-solid fa-download text-ochre"></i>
+                            <span>Exporter sauvegarde</span>
+                        </button>
+                        <label class="cursor-pointer px-3.5 py-2 rounded-lg bg-volcanic hover:bg-tikiAsh border border-parchment/20 text-xs text-parchment/85 flex items-center gap-1.5 transition-colors">
+                            <i class="fa-solid fa-upload text-ochre"></i>
+                            <span>Importer</span>
+                            <input type="file" id="import-json-input" accept=".json" class="hidden">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Légende optionnelle + Bouton sélection / Dropzone -->
+                <div class="grid md:grid-cols-12 gap-4 items-center">
+                    <div class="md:col-span-5">
+                        <label for="admin-photo-caption" class="block text-xs font-oswald uppercase tracking-wider text-parchment/80 mb-1.5">
+                            Légende de la photo (optionnel)
+                        </label>
+                        <input type="text" id="admin-photo-caption" placeholder="Ex: Répétition hebdomadaire à Montréal"
+                            class="w-full px-3.5 py-2.5 rounded-xl bg-volcanic border border-parchment/20 text-parchment placeholder-parchment/35 text-sm focus:outline-none focus:border-ochre">
+                    </div>
+
+                    <div class="md:col-span-7">
+                        <div id="dropzone" class="border-2 border-dashed border-ochre/40 hover:border-ochre bg-volcanic/70 rounded-xl p-4 text-center transition-colors cursor-pointer">
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-2.5 text-parchment/80 text-xs sm:text-sm">
+                                <i class="fa-solid fa-cloud-arrow-up text-ochre text-xl"></i>
+                                <span>Glissez-déposez vos photos ici ou <strong class="text-ochre underline">cliquez pour parcourir</strong></span>
+                            </div>
+                        </div>
+                        <input type="file" id="photo-upload-input" accept="image/*" multiple class="hidden">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grille de la Galerie -->
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- PHOTO PRINCIPALE FOURNIE (Toujours affichée aux visiteurs) -->
+                <div class="gallery-item group relative bg-charcoal rounded-2xl overflow-hidden border border-ochre/40 shadow-2xl md:col-span-2 lg:col-span-2 row-span-2">
+                    <div class="aspect-[4/4] sm:aspect-[16/13] w-full h-full overflow-hidden bg-volcanic relative">
+                        <img 
+                            src="photo de nous 2.jpg" 
+                            alt="Deux danseurs de 'Ori Tahiti Tāne Montréal en pareo noir, couronnes orange et plumes rouges, colliers verts et lances en bambou"
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 cursor-zoom-in"
+                            onclick="openLightbox(this.src, 'Les Guerriers de \'Ori Tahiti Tāne Montréal')"
+                            onerror="this.style.display='none'; document.getElementById('fallback-hero-photo').classList.remove('hidden');"
+                        >
+                        <!-- Fallback illustré fidèle à la photo des 2 danseurs avec lances -->
+                        <div id="fallback-hero-photo" class="hidden w-full h-full bg-gradient-to-b from-[#1c1c1e] via-[#151517] to-[#2b2927] flex flex-col items-center justify-center p-6 text-center relative">
+                            <div class="absolute inset-0 opacity-30" style="background: repeating-linear-gradient(90deg, #000 0px, #000 18px, #262626 28px, #000 38px);"></div>
+                            <svg viewBox="0 0 420 340" class="w-full max-w-md h-auto relative z-10 drop-shadow-2xl">
+                                <ellipse cx="210" cy="322" rx="185" ry="12" fill="#000000" opacity="0.55"/>
+                                <!-- DANSEUR GAUCHE -->
+                                <g transform="translate(80, 20)">
+                                    <rect x="8" y="38" width="5" height="262" rx="2" fill="#D4A359"/>
+                                    <path d="M10 42 L-6 8 L3 36 L6 4 L11 35 L16 5 L19 36 L27 9 Z" fill="#E8C27A"/>
+                                    <rect x="5" y="36" width="11" height="12" rx="2" fill="#F5F2EB"/>
+                                    <path d="M52 46 L48 28 L60 40 L67 24 L74 40 L84 29 L80 46 Z" fill="#9E1B24"/>
+                                    <rect x="49" y="44" width="34" height="11" rx="4" fill="#E8831E"/>
+                                    <circle cx="66" cy="64" r="13" fill="#C98A63"/>
+                                    <path d="M44 82 Q66 76 88 82 L84 152 L48 152 Z" fill="#C98A63"/>
+                                    <path d="M44 83 Q54 85 55 104 L43 108 Z" fill="#2A2421" opacity="0.75"/>
+                                    <path d="M54 80 Q66 105 78 80" fill="none" stroke="#4F8A42" stroke-width="6" stroke-linecap="round" stroke-dasharray="4 3"/>
+                                    <ellipse cx="40" cy="122" rx="12" ry="18" fill="#467A2E"/>
+                                    <ellipse cx="92" cy="122" rx="12" ry="18" fill="#467A2E"/>
+                                    <path d="M47 150 L85 150 L88 198 L66 186 L44 202 Z" fill="#141414"/>
+                                    <rect x="49" y="195" width="13" height="88" rx="5" fill="#C98A63"/>
+                                    <rect x="70" y="195" width="13" height="88" rx="5" fill="#C98A63"/>
+                                    <ellipse cx="55" cy="222" rx="15" ry="18" fill="#4E8732"/>
+                                    <ellipse cx="77" cy="222" rx="15" ry="18" fill="#4E8732"/>
+                                </g>
+                                <!-- DANSEUR DROIT -->
+                                <g transform="translate(215, 16)">
+                                    <rect x="14" y="36" width="5.5" height="268" rx="2" fill="#D4A359"/>
+                                    <path d="M16 40 L0 5 L9 34 L12 2 L17 33 L22 3 L25 34 L34 6 Z" fill="#E8C27A"/>
+                                    <rect x="11" y="34" width="11" height="12" rx="2" fill="#F5F2EB"/>
+                                    <path d="M62 46 L58 28 L70 40 L78 24 L86 40 L96 29 L92 46 Z" fill="#9E1B24"/>
+                                    <rect x="59" y="44" width="36" height="11" rx="4" fill="#E8831E"/>
+                                    <circle cx="77" cy="64" r="14" fill="#C98A63"/>
+                                    <path d="M65 67 Q77 80 89 67" fill="none" stroke="#D8D8D8" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M52 83 Q77 77 102 83 L98 156 L56 156 Z" fill="#C98A63"/>
+                                    <circle cx="67" cy="98" r="11" fill="none" stroke="#2A2421" stroke-width="3.5" stroke-dasharray="3 2" opacity="0.75"/>
+                                    <path d="M64 81 Q77 104 90 81" fill="none" stroke="#4F8A42" stroke-width="6" stroke-linecap="round" stroke-dasharray="4 3"/>
+                                    <ellipse cx="48" cy="122" rx="13" ry="19" fill="#467A2E"/>
+                                    <ellipse cx="106" cy="122" rx="13" ry="19" fill="#467A2E"/>
+                                    <path d="M55 154 L99 154 L102 200 L77 188 L52 204 Z" fill="#141414"/>
+                                    <rect x="57" y="198" width="14" height="88" rx="5" fill="#C98A63"/>
+                                    <rect x="83" y="198" width="14" height="88" rx="5" fill="#C98A63"/>
+                                    <ellipse cx="64" cy="225" rx="16" ry="18" fill="#4E8732"/>
+                                    <ellipse cx="90" cy="225" rx="16" ry="18" fill="#4E8732"/>
+                                </g>
+                            </svg>
+                            <span class="relative z-10 text-xs text-parchment/75 bg-volcanic/80 px-3 py-1 rounded-full border border-parchment/15 mt-2">
+                                Tenue traditionnelle : Pareo noir, couronnes de coquillages, feuillages & lances
+                            </span>
+                        </div>
+
+                        <!-- Badge sur la photo -->
+                        <div class="absolute top-4 left-4 bg-volcanic/85 backdrop-blur-md border border-ochre/40 px-3.5 py-1.5 rounded-full text-xs font-oswald uppercase tracking-wider text-ochre pointer-events-none">
+                            <i class="fa-solid fa-star mr-1"></i> Tenue Traditionnelle & Lances
+                        </div>
+
+                        <!-- Overlay bas -->
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-volcanic via-volcanic/80 to-transparent p-6 pointer-events-none">
+                            <h3 class="font-cinzel font-bold text-xl text-parchment">Les Guerriers de 'Ori Tahiti Tāne Montréal</h3>
+                            <p class="text-sm text-parchment/80 mt-1">
+                                Pareo noir, couronnes de coquillages orange et plumes rouges, colliers de noix de kukui/verdure et lances traditionnelles.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Les photos ajoutées par l'administrateur s'afficheront dynamiquement ici -->
+
+            </div>
+
+            <!-- Message discret s'il n'y a pas encore de photos supplémentaires -->
+            <p id="empty-extra-photos-note" class="text-center text-xs text-parchment/45 mt-6">
+                D'autres photos de nos répétitions hebdomadaires et prestations à Montréal seront ajoutées prochainement par l'équipe.
+            </p>
+        </div>
+    </section>
+
+    <div class="polynesian-border"></div>
+
+    <!-- =====================================================================
+         5. FORFAITS & ADHÉSION (RYTHME 1 FOIS PAR SEMAINE)
+    ====================================================================== -->
+    <section id="forfaits" class="py-20 lg:py-28 bg-charcoal/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- En-tête + Contrôle tarifs réservé à l'Admin -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+                <div>
+                    <span class="font-oswald uppercase tracking-[0.25em] text-ember text-sm font-semibold">Entraînement 1 fois par semaine</span>
+                    <h2 class="font-cinzel font-bold text-3xl sm:text-4xl lg:text-5xl text-parchment mt-2">
+                        Forfaits & <span class="text-ochre">Adhésion</span>
+                    </h2>
+                    <p class="text-parchment/75 mt-3 max-w-2xl text-sm sm:text-base">
+                        Nous dansons et nous entraînons <strong class="text-parchment">1 fois par semaine</strong> (environ 4 séances par mois). Choisissez votre formule et cliquez sur <strong class="text-parchment">« Choisir ce forfait »</strong> pour pré-remplir votre inscription.
+                    </p>
+                </div>
+
+                <!-- Bouton pour personnaliser les prix (Visible uniquement en Mode Admin) -->
+                <button id="toggle-edit-plans" type="button" class="hidden self-start md:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-volcanic border border-ochre/60 hover:bg-tikiAsh text-xs sm:text-sm text-ochre transition-colors">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span id="edit-plans-label">Modifier les tarifs (Admin)</span>
+                </button>
+            </div>
+
+            <!-- Cartes des 3 Forfaits (Rythme 1x / semaine) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- FORFAIT 1 : SÉANCE DÉCOUVERTE (1 COURS) -->
+                <div class="bg-volcanic border border-parchment/15 rounded-3xl p-8 flex flex-col justify-between hover:border-parchment/35 transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-tikiAsh text-parchment/80 font-oswald text-xs uppercase tracking-widest">
+                                1 Cours d'essai
+                            </span>
+                            <i class="fa-solid fa-compass text-ochre text-xl"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-2xl text-parchment">Séance Découverte</h3>
+                        <p class="text-xs uppercase tracking-wider text-parchment/55 mt-1">1 cours unique</p>
+
+                        <!-- Prix -->
+                        <div class="my-6 pb-6 border-b border-parchment/10 flex items-baseline gap-2">
+                            <span class="plan-price font-oswald font-bold text-4xl sm:text-5xl text-parchment" data-plan-id="decouverte">15 $ CAD</span>
+                            <span class="text-sm text-parchment/60">/ séance</span>
+                        </div>
+
+                        <p class="text-sm text-parchment/80 leading-relaxed mb-6">
+                            Essai unique (1x/semaine) pour découvrir le rythme, les pas de base et l'énergie du groupe sans engagement.
+                        </p>
+
+                        <ul class="space-y-3 text-sm text-parchment/80 mb-8">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>Accès à 1 séance hebdomadaire complète</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>Initiation aux postures de base (<em class="text-parchment">Pa'oti</em>, <em class="text-parchment">Fa'arapu</em>)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>Prêt d'une lance d'entraînement sur place</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" data-plan-btn="decouverte" onclick="selectPlanById('decouverte')" class="w-full py-3.5 px-6 rounded-xl bg-charcoal hover:bg-tikiAsh border border-parchment/25 text-parchment font-oswald uppercase tracking-wider text-sm transition-all flex items-center justify-center gap-2">
+                        <span>Choisir ce forfait</span>
+                        <i class="fa-solid fa-arrow-right text-ochre"></i>
+                    </button>
+                </div>
+
+                <!-- FORFAIT 2 : FORFAIT MENSUEL (1X / SEMAINE) -->
+                <div class="bg-gradient-to-b from-charcoal to-volcanic border-2 border-ember rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl ember-glow lg:-translate-y-2">
+                    <!-- Ruban Populaire -->
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-ember text-parchment font-oswald uppercase tracking-widest text-xs font-bold px-4 py-1 rounded-full shadow-lg">
+                        1x / Semaine • Populaire
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-ember/20 text-ember border border-ember/30 font-oswald text-xs uppercase tracking-widest">
+                                4 séances / mois
+                            </span>
+                            <i class="fa-solid fa-fire text-ember text-xl"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-2xl text-parchment">Forfait Mensuel</h3>
+                        <p class="text-xs uppercase tracking-wider text-ochre mt-1">1x / semaine (4 séances par mois)</p>
+
+                        <!-- Prix -->
+                        <div class="my-6 pb-6 border-b border-parchment/15 flex items-baseline gap-2">
+                            <span class="plan-price font-oswald font-bold text-4xl sm:text-5xl text-parchment" data-plan-id="mensuel">50 $ CAD</span>
+                            <span class="text-sm text-parchment/60">/ mois</span>
+                        </div>
+
+                        <p class="text-sm text-parchment/85 leading-relaxed mb-6">
+                            Accès aux 4 séances par mois (1 entraînement hebdomadaire) : apprentissage des chorégraphies et frappe du <em class="text-parchment">Pā'oti</em>.
+                        </p>
+
+                        <ul class="space-y-3 text-sm text-parchment/85 mb-8">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ember mt-1"></i>
+                                <span>1 entraînement par semaine (4 séances / mois)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ember mt-1"></i>
+                                <span>Maîtrise des pas fondamentaux (<em class="text-parchment">Pa'oti, Fa'arapu, Tāne</em>)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ember mt-1"></i>
+                                <span>Apprentissage des chorégraphies collectives</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ember mt-1"></i>
+                                <span>Suivi régulier et cohésion de groupe à Montréal</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" data-plan-btn="mensuel" onclick="selectPlanById('mensuel')" class="w-full py-4 px-6 rounded-xl bg-ember hover:bg-emberDark text-parchment font-oswald uppercase tracking-wider text-sm shadow-lg shadow-ember/30 transition-all flex items-center justify-center gap-2">
+                        <span>Choisir ce forfait</span>
+                        <i class="fa-solid fa-fire text-ochre"></i>
+                    </button>
+                </div>
+
+                <!-- FORFAIT 3 : FORFAIT TRIMESTRIEL / SESSION (1X / SEMAINE SUR 3 MOIS) -->
+                <div class="bg-volcanic border border-ochre/35 rounded-3xl p-8 flex flex-col justify-between hover:border-ochre transition-all duration-300 shadow-xl">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-ochre/15 text-ochre border border-ochre/30 font-oswald text-xs uppercase tracking-widest">
+                                12 séances / trimestre
+                            </span>
+                            <i class="fa-solid fa-shield-halved text-ochre text-xl"></i>
+                        </div>
+                        <h3 class="font-cinzel font-bold text-2xl text-parchment">Forfait Trimestriel</h3>
+                        <p class="text-xs uppercase tracking-wider text-parchment/55 mt-1">Session 3 mois (1x / semaine — ~10,80 $ / séance)</p>
+
+                        <!-- Prix -->
+                        <div class="my-6 pb-6 border-b border-parchment/10 flex items-baseline gap-2">
+                            <span class="plan-price font-oswald font-bold text-4xl sm:text-5xl text-parchment" data-plan-id="trimestriel">130 $ CAD</span>
+                            <span class="text-sm text-parchment/60">/ 3 mois</span>
+                        </div>
+
+                        <p class="text-sm text-parchment/80 leading-relaxed mb-6">
+                            Engagement sur 12 séances sur 3 mois (soit ~10,80 $ par séance) pour la préparation aux spectacles et événements culturels.
+                        </p>
+
+                        <ul class="space-y-3 text-sm text-parchment/80 mb-8">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>12 séances hebdomadaires (1x / semaine sur 3 mois)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>Préparation aux prestations scéniques & événements</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>Maniement de la lance, chants & cohésion de troupe</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-ochre mt-1"></i>
+                                <span>Tarif avantageux sur l'ensemble du trimestre</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button type="button" data-plan-btn="trimestriel" onclick="selectPlanById('trimestriel')" class="w-full py-3.5 px-6 rounded-xl bg-ochre hover:bg-ochre/90 text-volcanic font-oswald font-bold uppercase tracking-wider text-sm transition-all flex items-center justify-center gap-2">
+                        <span>Choisir ce forfait</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="polynesian-divider"></div>
+
+    <!-- =====================================================================
+         6. FORMULAIRE DE CONTACT & INSCRIPTION
+    ====================================================================== -->
+    <section id="inscription" class="py-20 lg:py-28 bg-volcanic relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+                
+                <!-- Colonne Informations Pratiques -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="font-oswald uppercase tracking-[0.25em] text-ochre text-sm font-semibold">Contact & Recrutement</span>
+                    <h2 class="font-cinzel font-bold text-3xl sm:text-4xl text-parchment leading-tight">
+                        Prêt à entrer dans le <span class="text-ember">cercle</span> ?
+                    </h2>
+                    <p class="text-parchment/75 text-sm sm:text-base leading-relaxed">
+                        Remplissez le formulaire ci-contre en sélectionnant le forfait qui vous intéresse. Nous vous recontacterons rapidement avec le jour et l'heure de notre pratique hebdomadaire à Montréal.
+                    </p>
+
+                    <!-- Carte d'infos -->
+                    <div class="bg-charcoal border border-parchment/15 rounded-2xl p-6 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-ember/15 border border-ember/30 flex items-center justify-center text-ember shrink-0 mt-0.5">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-cinzel font-bold text-base text-parchment">Rythme & Lieu</h4>
+                                <p class="text-sm text-parchment/70 mt-0.5">1 entraînement par semaine dans le Grand Montréal (adresse précise transmise lors de l'inscription).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-ochre/15 border border-ochre/30 flex items-center justify-center text-ochre shrink-0 mt-0.5">
+                                <i class="fa-solid fa-shirt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-cinzel font-bold text-base text-parchment">Tenue d'entraînement</h4>
+                                <p class="text-sm text-parchment/70 mt-0.5">Pareo ou short de sport confortable, bouteille d'eau et pieds nus pour un ancrage optimal.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-ember/15 border border-ember/30 flex items-center justify-center text-ember shrink-0 mt-0.5">
+                                <i class="fa-solid fa-hands-praying"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-cinzel font-bold text-base text-parchment">Lignée & Respect</h4>
+                                <p class="text-sm text-parchment/70 mt-0.5">Pratique autorisée par notre Ra'atira <strong class="text-ochre">Val Nuimahani</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne Formulaire Interactif -->
+                <div class="lg:col-span-7">
+                    <div class="bg-charcoal border border-parchment/15 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+                        
+                        <form id="registration-form" class="space-y-5" novalidate>
+                            <div class="border-b border-parchment/10 pb-4 mb-2">
+                                <h3 class="font-cinzel font-bold text-2xl text-parchment">Demande d'inscription</h3>
+                                <p class="text-xs text-parchment/60 mt-1">Tous les champs marqués d'un * sont requis.</p>
+                            </div>
+
+                            <!-- Nom & Courriel -->
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="fullName" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                                        Nom complet *
+                                    </label>
+                                    <input type="text" id="fullName" name="fullName" required placeholder="Ex: Teiva Tetuanui"
+                                        class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/20 text-parchment placeholder-parchment/35 focus:outline-none focus:border-ochre transition-colors text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="email" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                                        Courriel *
+                                    </label>
+                                    <input type="email" id="email" name="email" required placeholder="votre.courriel@exemple.ca"
+                                        class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/20 text-parchment placeholder-parchment/35 focus:outline-none focus:border-ochre transition-colors text-sm">
+                                </div>
+                            </div>
+
+                            <!-- Téléphone & Niveau d'expérience -->
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="phone" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                                        Téléphone *
+                                    </label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="(514) 000-0000"
+                                        class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/20 text-parchment placeholder-parchment/35 focus:outline-none focus:border-ochre transition-colors text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="experience" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                                        Niveau d'expérience *
+                                    </label>
+                                    <select id="experience" name="experience" required
+                                        class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/20 text-parchment focus:outline-none focus:border-ochre transition-colors text-sm">
+                                        <option value="Débutant (Première découverte du 'Ori Tahiti)">Débutant (Première découverte)</option>
+                                        <option value="Intermédiaire (Bases acquises)">Intermédiaire (Bases acquises)</option>
+                                        <option value="Avancé (Expérience en danse polynésienne / scène)">Avancé (Expérience en troupe / scène)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Sélecteur de Forfait (Synchronisé avec les cartes 1x/semaine) -->
+                            <div>
+                                <label for="selectedPlan" class="block text-xs font-oswald uppercase tracking-wider text-ochre mb-2">
+                                    Forfait souhaité *
+                                </label>
+                                <div class="relative">
+                                    <select id="selectedPlan" name="selectedPlan" required
+                                        class="w-full px-4 py-3.5 rounded-xl bg-volcanic border-2 border-ochre/50 text-parchment font-medium focus:outline-none focus:border-ember transition-colors text-sm">
+                                        <option value="Séance Découverte — 1 cours unique (15 $ CAD / séance)">Séance Découverte — 1 cours unique (15 $ CAD / séance)</option>
+                                        <option value="Forfait Mensuel — 1x / semaine, 4 séances/mois (50 $ CAD / mois)" selected>Forfait Mensuel — 1x / semaine, 4 séances/mois (50 $ CAD / mois)</option>
+                                        <option value="Forfait Trimestriel / Session — 1x / semaine sur 3 mois (130 $ CAD / 3 mois)">Forfait Trimestriel / Session — 1x / semaine sur 3 mois (130 $ CAD / 3 mois)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Message / Motivations -->
+                            <div>
+                                <label for="message" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                                    Vos motivations ou questions
+                                </label>
+                                <textarea id="message" name="message" rows="4" placeholder="Parlez-nous brièvement de votre motivation à rejoindre 'Ori Tahiti Tāne Montréal, de vos disponibilités ou de vos questions..."
+                                    class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/20 text-parchment placeholder-parchment/35 focus:outline-none focus:border-ochre transition-colors text-sm"></textarea>
+                            </div>
+
+                            <!-- Zone d'erreur éventuelle -->
+                            <div id="form-error" class="hidden p-3.5 rounded-xl bg-ember/20 border border-ember text-parchment text-xs flex items-center gap-2.5">
+                                <i class="fa-solid fa-circle-exclamation text-ember text-base"></i>
+                                <span id="form-error-text">Veuillez remplir tous les champs obligatoires.</span>
+                            </div>
+
+                            <!-- Bouton Envoi -->
+                            <button type="submit" class="w-full py-4 px-8 rounded-xl bg-ember hover:bg-emberDark text-parchment font-oswald uppercase tracking-widest text-base font-bold shadow-xl shadow-ember/25 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                                <span>Envoyer mon inscription</span>
+                                <i class="fa-solid fa-paper-plane text-ochre"></i>
+                            </button>
+                        </form>
+
+                        <!-- Message de confirmation récapitulatif (masqué par défaut) -->
+                        <div id="confirmation-box" class="hidden space-y-6 py-4">
+                            <div class="w-16 h-16 rounded-2xl bg-ochre/20 border border-ochre text-ochre flex items-center justify-center text-3xl mx-auto">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="text-center">
+                                <span class="font-oswald uppercase tracking-widest text-xs text-ochre">Māuruuru • Demande enregistrée</span>
+                                <h3 class="font-cinzel font-bold text-2xl sm:text-3xl text-parchment mt-1">Ia Ora Na, <span id="conf-name" class="text-ochre"></span> !</h3>
+                                <p class="text-sm text-parchment/80 mt-2">
+                                    Votre demande d'inscription auprès de <strong class="text-parchment">'Ori Tahiti Tāne Montréal</strong> a bien été prise en compte. Voici le récapitulatif de votre choix :
+                                </p>
+                            </div>
+
+                            <!-- Récapitulatif structuré -->
+                            <div class="bg-volcanic border border-parchment/15 rounded-2xl p-5 space-y-3 text-sm">
+                                <div class="flex justify-between gap-4 border-b border-parchment/10 pb-2.5">
+                                    <span class="text-parchment/60">Forfait choisi :</span>
+                                    <span id="conf-plan" class="font-semibold text-ochre text-right"></span>
+                                </div>
+                                <div class="flex justify-between gap-4 border-b border-parchment/10 pb-2.5">
+                                    <span class="text-parchment/60">Niveau :</span>
+                                    <span id="conf-exp" class="text-parchment text-right"></span>
+                                </div>
+                                <div class="flex justify-between gap-4 border-b border-parchment/10 pb-2.5">
+                                    <span class="text-parchment/60">Courriel :</span>
+                                    <span id="conf-email" class="text-parchment text-right"></span>
+                                </div>
+                                <div class="flex justify-between gap-4">
+                                    <span class="text-parchment/60">Téléphone :</span>
+                                    <span id="conf-phone" class="text-parchment text-right"></span>
+                                </div>
+                                <div id="conf-msg-wrapper" class="pt-2.5 border-t border-parchment/10 hidden">
+                                    <span class="block text-parchment/60 mb-1">Message :</span>
+                                    <p id="conf-msg" class="text-parchment/85 italic text-xs"></p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                <button type="button" onclick="resetRegistrationForm()" class="w-full py-3 px-5 rounded-xl bg-volcanic hover:bg-tikiAsh border border-parchment/20 text-parchment font-oswald uppercase tracking-wider text-xs transition-colors">
+                                    Modifier ou faire une nouvelle demande
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         7. PIED DE PAGE (FOOTER)
+    ====================================================================== -->
+    <footer class="bg-charcoal border-t border-parchment/15 pt-14 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-parchment/10">
+                
+                <!-- Colonne 1 : Identité -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-parchment flex items-center justify-center border border-ochre text-volcanic font-cinzel font-black text-sm">
+                            OT
+                        </div>
+                        <div>
+                            <span class="block font-cinzel font-bold text-base text-parchment">'ORI TAHITI TĀNE</span>
+                            <span class="block font-oswald text-xs tracking-[0.22em] text-ochre uppercase">Montréal</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-parchment/70 leading-relaxed">
+                        Collectif de danse traditionnelle tahitienne masculine à Montréal. Force, discipline, solidarité et transmission culturelle.
+                    </p>
+                </div>
+
+                <!-- Colonne 2 : Hommage Ra'atira -->
+                <div class="space-y-3">
+                    <h4 class="font-oswald uppercase tracking-wider text-sm text-ochre font-semibold">Autorisation & Lignée</h4>
+                    <p class="text-sm text-parchment/75 leading-relaxed">
+                        Pratique culturelle autorisée et légitimée par notre Ra'atira <strong class="text-parchment">Val Nuimahani</strong>, dans le respect des racines et des traditions polynésiennes.
+                    </p>
+                </div>
+
+                <!-- Colonne 3 : Liens rapides -->
+                <div class="space-y-3">
+                    <h4 class="font-oswald uppercase tracking-wider text-sm text-ochre font-semibold">Navigation</h4>
+                    <ul class="space-y-2 text-sm text-parchment/75">
+                        <li><a href="#accueil" class="hover:text-ochre transition-colors">Accueil</a></li>
+                        <li><a href="#esprit" class="hover:text-ochre transition-colors">Notre Esprit & Ra'atira Val Nuimahani</a></li>
+                        <li><a href="#galerie" class="hover:text-ochre transition-colors">Galerie Photos</a></li>
+                        <li><a href="#forfaits" class="hover:text-ochre transition-colors">Forfaits & Tarifs</a></li>
+                        <li><a href="#inscription" class="hover:text-ochre transition-colors">S'inscrire au groupe</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-parchment/50">
+                <p>© <span id="current-year"></span> 'Ori Tahiti Tāne Montréal. Tous droits réservés.</p>
+                <div class="flex items-center gap-5">
+                    <span class="font-oswald uppercase tracking-widest text-parchment/60">Montréal, QC • Māuruuru Roa</span>
+                    <!-- Bouton discret Accès Administrateur -->
+                    <button type="button" id="admin-access-btn" title="Espace réservé au responsable du groupe" class="inline-flex items-center gap-1.5 text-parchment/35 hover:text-ochre transition-colors">
+                        <i id="admin-lock-icon" class="fa-solid fa-lock text-[11px]"></i>
+                        <span id="admin-access-label">Accès Admin</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         MODALE DE CONNEXION & PARAMÈTRES ADMINISTRATEUR
+    ====================================================================== -->
+    <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-volcanic/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-charcoal border border-ochre/50 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+            <button type="button" onclick="closeAdminModal()" aria-label="Fermer" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-volcanic border border-parchment/15 text-parchment/70 hover:text-ochre flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Vue 1 : Connexion PIN -->
+            <div id="admin-login-view" class="space-y-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-ochre/20 border border-ochre/40 flex items-center justify-center text-ochre text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment">Accès Administrateur</h3>
+                        <p class="text-xs text-parchment/60">Réservé à la gestion des photos et tarifs</p>
+                    </div>
+                </div>
+
+                <form id="admin-pin-form" class="space-y-4">
+                    <div>
+                        <label for="admin-pin-input" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                            Code PIN Administrateur
+                        </label>
+                        <input type="password" id="admin-pin-input" inputmode="numeric" maxlength="12" placeholder="••••" required
+                            class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/25 text-parchment text-center tracking-[0.5em] text-lg font-bold focus:outline-none focus:border-ochre">
+                        <p class="text-[11px] text-parchment/45 mt-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-ochre/70"></i>
+                            <span>Code PIN par défaut : <strong class="text-parchment/75">1234</strong> (modifiable une fois connecté).</span>
+                        </p>
+                    </div>
+
+                    <p id="admin-pin-error" class="hidden text-xs text-ember font-medium">
+                        Code PIN incorrect. Veuillez réessayer.
+                    </p>
+
+                    <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-ochre hover:bg-ochre/90 text-volcanic font-oswald font-bold uppercase tracking-wider text-sm transition-colors">
+                        Déverrouiller l'espace Admin
+                    </button>
+                </form>
+            </div>
+
+            <!-- Vue 2 : Paramètres Admin & Déconnexion (quand déjà connecté) -->
+            <div id="admin-settings-view" class="hidden space-y-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-ember/20 border border-ember/40 flex items-center justify-center text-ember text-lg">
+                        <i class="fa-solid fa-user-gear"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment">Session Admin Active</h3>
+                        <p class="text-xs text-parchment/60">Vous pouvez gérer la galerie et les tarifs</p>
+                    </div>
+                </div>
+
+                <!-- Changer le code PIN -->
+                <form id="change-pin-form" class="bg-volcanic border border-parchment/15 rounded-2xl p-4 space-y-3">
+                    <label for="new-admin-pin" class="block text-xs font-oswald uppercase tracking-wider text-ochre">
+                        Modifier mon code PIN (4 à 8 chiffres)
+                    </label>
+                    <div class="flex gap-2">
+                        <input type="password" id="new-admin-pin" inputmode="numeric" minlength="4" maxlength="8" placeholder="Nouveau PIN" required
+                            class="flex-1 px-3.5 py-2 rounded-xl bg-charcoal border border-parchment/20 text-parchment text-sm focus:outline-none focus:border-ochre">
+                        <button type="submit" class="px-4 py-2 rounded-xl bg-ochre text-volcanic font-oswald font-bold uppercase text-xs">
+                            Enregistrer
+                        </button>
+                    </div>
+                    <p id="pin-changed-msg" class="hidden text-xs text-emerald-400">
+                        Nouveau code PIN enregistré avec succès.
+                    </p>
+                </form>
+
+                <div class="flex flex-col gap-2.5 pt-2">
+                    <a href="#galerie" onclick="closeAdminModal()" class="w-full py-3 px-4 rounded-xl bg-charcoal hover:bg-tikiAsh border border-parchment/20 text-center font-oswald uppercase tracking-wider text-xs text-parchment">
+                        Aller à la gestion de la galerie
+                    </a>
+                    <button type="button" onclick="logoutAdmin()" class="w-full py-3 px-4 rounded-xl bg-ember hover:bg-emberDark font-oswald uppercase tracking-wider text-xs text-parchment font-bold">
+                        Verrouiller / Quitter le Mode Admin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         LIGHTBOX POUR AGRANDIR LES PHOTOS DE LA GALERIE
+    ====================================================================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-volcanic/95 backdrop-blur-lg flex items-center justify-center p-4" onclick="closeLightbox(event)">
+        <button type="button" onclick="closeLightbox(event, true)" aria-label="Fermer l'aperçu" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-charcoal border border-parchment/20 text-parchment hover:text-ochre flex items-center justify-center text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-4xl w-full flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="Aperçu agrandi" class="max-h-[80vh] w-auto rounded-2xl border border-parchment/20 shadow-2xl object-contain">
+            <p id="lightbox-caption" class="mt-4 font-cinzel text-parchment text-base sm:text-lg text-center"></p>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT INTERACTIF (MODE ADMIN, GALERIE PERSISTANTE & FORFAITS)
+    ====================================================================== -->
+    <script>
+        // Année dynamique dans le footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Clés de stockage local
+        const STORAGE_KEYS = {
+            PIN: 'ottm_admin_pin',
+            PHOTOS: 'ottm_gallery_photos',
+            PRICES: 'ottm_plan_prices',
+            SESSION: 'ottm_admin_session'
+        };
+
+        // 1. Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. Gestion du Mode Administrateur (PIN + Session + Persistance)
+        let isAdminLoggedIn = sessionStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
+
+        function getAdminPin() {
+            return localStorage.getItem(STORAGE_KEYS.PIN) || '1234';
+        }
+
+        const adminModal = document.getElementById('admin-modal');
+        const adminAccessBtn = document.getElementById('admin-access-btn');
+        const adminLoginView = document.getElementById('admin-login-view');
+        const adminSettingsView = document.getElementById('admin-settings-view');
+
+        adminAccessBtn.addEventListener('click', () => {
+            document.getElementById('admin-pin-error').classList.add('hidden');
+            document.getElementById('pin-changed-msg').classList.add('hidden');
+            if (isAdminLoggedIn) {
+                adminLoginView.classList.add('hidden');
+                adminSettingsView.classList.remove('hidden');
+            } else {
+                adminSettingsView.classList.add('hidden');
+                adminLoginView.classList.remove('hidden');
+                document.getElementById('admin-pin-input').value = '';
+            }
+            adminModal.classList.remove('hidden');
+        });
+
+        function closeAdminModal() {
+            adminModal.classList.add('hidden');
+        }
+
+        document.getElementById('admin-pin-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const enteredPin = document.getElementById('admin-pin-input').value.trim();
+            if (enteredPin === getAdminPin()) {
+                isAdminLoggedIn = true;
+                sessionStorage.setItem(STORAGE_KEYS.SESSION, 'true');
+                applyAdminUIState();
+                closeAdminModal();
+            } else {
+                document.getElementById('admin-pin-error').classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('change-pin-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newPin = document.getElementById('new-admin-pin').value.trim();
+            if (newPin.length >= 4) {
+                localStorage.setItem(STORAGE_KEYS.PIN, newPin);
+                document.getElementById('new-admin-pin').value = '';
+                document.getElementById('pin-changed-msg').classList.remove('hidden');
+            }
+        });
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            sessionStorage.removeItem(STORAGE_KEYS.SESSION);
+            if (isEditingPlans) {
+                toggleEditPlansBtn.click();
+            }
+            applyAdminUIState();
+            closeAdminModal();
+        }
+
+        function applyAdminUIState() {
+            const adminGalleryPanel = document.getElementById('admin-gallery-panel');
+            const adminGalleryBadge = document.getElementById('admin-gallery-badge');
+            const toggleEditPlansBtn = document.getElementById('toggle-edit-plans');
+            const adminLockIcon = document.getElementById('admin-lock-icon');
+            const adminAccessLabel = document.getElementById('admin-access-label');
+
+            if (isAdminLoggedIn) {
+                adminGalleryPanel.classList.remove('hidden');
+                adminGalleryBadge.classList.remove('hidden');
+                adminGalleryBadge.classList.add('inline-flex');
+                toggleEditPlansBtn.classList.remove('hidden');
+                adminLockIcon.className = 'fa-solid fa-unlock text-ochre text-[11px]';
+                adminAccessLabel.textContent = 'Admin Connecté';
+                adminAccessBtn.classList.add('text-ochre');
+            } else {
+                adminGalleryPanel.classList.add('hidden');
+                adminGalleryBadge.classList.add('hidden');
+                adminGalleryBadge.classList.remove('inline-flex');
+                toggleEditPlansBtn.classList.add('hidden');
+                adminLockIcon.className = 'fa-solid fa-lock text-[11px]';
+                adminAccessLabel.textContent = 'Accès Admin';
+                adminAccessBtn.classList.remove('text-ochre');
+            }
+
+            // Afficher/masquer les boutons de suppression sur les photos
+            document.querySelectorAll('.admin-delete-photo-btn').forEach(btn => {
+                if (isAdminLoggedIn) {
+                    btn.classList.remove('hidden');
+                    btn.classList.add('flex');
+                } else {
+                    btn.classList.add('hidden');
+                    btn.classList.remove('flex');
+                }
+            });
+        }
+
+        // 3. Galerie Photo (Affichage public + Ajout/Suppression Admin + Sauvegarde localStorage)
+        const photoInput = document.getElementById('photo-upload-input');
+        const dropzone = document.getElementById('dropzone');
+        const galleryGrid = document.getElementById('gallery-grid');
+        const emptyNote = document.getElementById('empty-extra-photos-note');
+
+        function getSavedPhotos() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEYS.PHOTOS)) || [];
+            } catch {
+                return [];
+            }
+        }
+
+        function savePhotos(photosArray) {
+            try {
+                localStorage.setItem(STORAGE_KEYS.PHOTOS, JSON.stringify(photosArray));
+            } catch (err) {
+                console.warn('Espace de stockage local saturé pour les images volumineuses.', err);
+            }
+        }
+
+        function renderSavedPhotos() {
+            // Retirer les cartes dynamiques existantes avant de re-rendre
+            document.querySelectorAll('.dynamic-gallery-item').forEach(el => el.remove());
+
+            const photos = getSavedPhotos();
+            if (photos.length > 0) {
+                emptyNote.classList.add('hidden');
+            } else {
+                emptyNote.classList.remove('hidden');
+            }
+
+            photos.forEach((photo) => {
+                const newCard = document.createElement('div');
+                newCard.className = "gallery-item dynamic-gallery-item group relative bg-charcoal rounded-2xl overflow-hidden border border-parchment/15 hover:border-ochre/50 transition-all shadow-lg";
+                const safeTitle = (photo.title || "'Ori Tahiti Tāne Montréal").replace(/"/g, '&quot;');
+                const jsSafeTitle = (photo.title || "'Ori Tahiti Tāne Montréal").replace(/'/g, "\\'");
+
+                newCard.innerHTML = `
+                    <div class="aspect-[4/3] w-full overflow-hidden bg-volcanic relative">
+                        <img src="${photo.src}" alt="${safeTitle}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox('${photo.src}', '${jsSafeTitle}')">
+                        <button type="button" onclick="deleteSavedPhoto('${photo.id}')" title="Supprimer cette photo (Admin)" class="admin-delete-photo-btn ${isAdminLoggedIn ? 'flex' : 'hidden'} absolute top-3 right-3 w-8 h-8 rounded-full bg-volcanic/90 hover:bg-ember text-parchment text-xs items-center justify-center border border-parchment/25 transition-colors">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-volcanic via-volcanic/75 to-transparent p-4 pointer-events-none">
+                            <p class="font-cinzel font-bold text-sm text-parchment truncate">${safeTitle}</p>
+                            <span class="text-[11px] text-ochre">'Ori Tahiti Tāne Montréal</span>
+                        </div>
+                    </div>
+                `;
+                galleryGrid.appendChild(newCard);
+            });
+        }
+
+        function deleteSavedPhoto(photoId) {
+            if (!isAdminLoggedIn) return;
+            const updated = getSavedPhotos().filter(p => p.id !== photoId);
+            savePhotos(updated);
+            renderSavedPhotos();
+        }
+
+        // Compression légère d'image pour un stockage fluide dans localStorage
+        function compressImageFile(file, callback) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    const maxDim = 1200;
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) {
+                            height = Math.round((height * maxDim) / width);
+                            width = maxDim;
+                        } else {
+                            width = Math.round((width * maxDim) / height);
+                            height = maxDim;
+                        }
+                    }
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    callback(canvas.toDataURL('image/jpeg', 0.82));
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleUploadedFiles(files) {
+            if (!isAdminLoggedIn) return;
+            const customCaption = document.getElementById('admin-photo-caption').value.trim();
+
+            Array.from(files).forEach((file) => {
+                if (!file.type.startsWith('image/')) return;
+                compressImageFile(file, (compressedDataUrl) => {
+                    const fallbackTitle = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+                    const photos = getSavedPhotos();
+                    photos.push({
+                        id: 'photo_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+                        src: compressedDataUrl,
+                        title: customCaption || fallbackTitle
+                    });
+                    savePhotos(photos);
+                    renderSavedPhotos();
+                });
+            });
+
+            document.getElementById('admin-photo-caption').value = '';
+        }
+
+        dropzone.addEventListener('click', () => {
+            if (isAdminLoggedIn) photoInput.click();
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropzone.classList.add('border-ochre', 'bg-charcoal');
+            });
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('border-ochre', 'bg-charcoal');
+            });
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            if (!isAdminLoggedIn) return;
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                handleUploadedFiles(e.dataTransfer.files);
+            }
+        });
+
+        photoInput.addEventListener('change', (e) => {
+            if (e.target.files && e.target.files.length > 0) {
+                handleUploadedFiles(e.target.files);
+                photoInput.value = '';
+            }
+        });
+
+        // Export / Import JSON pour sauvegarde externe par l'Admin
+        function exportSiteData() {
+            const payload = {
+                photos: getSavedPhotos(),
+                prices: getSavedPrices()
+            };
+            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'ori-tahiti-tane-montreal-sauvegarde.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        document.getElementById('import-json-input').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                try {
+                    const data = JSON.parse(ev.target.result);
+                    if (Array.isArray(data.photos)) savePhotos(data.photos);
+                    if (data.prices) localStorage.setItem(STORAGE_KEYS.PRICES, JSON.stringify(data.prices));
+                    loadSavedPrices();
+                    renderSavedPhotos();
+                } catch {
+                    console.error('Fichier de sauvegarde invalide.');
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = '';
+        });
+
+        // Lightbox
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(src, caption) {
+            lightboxImg.src = src;
+            lightboxCaption.textContent = caption || "'Ori Tahiti Tāne Montréal";
+            lightboxModal.classList.remove('hidden');
+        }
+
+        function closeLightbox(event, force = false) {
+            if (force || event.target === lightboxModal) {
+                lightboxModal.classList.add('hidden');
+                lightboxImg.src = '';
+            }
+        }
+
+        // 4. Synchronisation Forfaits (1x / semaine) -> Formulaire d'inscription
+        function getSavedPrices() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEYS.PRICES)) || {
+                    decouverte: '15 $ CAD',
+                    mensuel: '50 $ CAD',
+                    trimestriel: '130 $ CAD'
+                };
+            } catch {
+                return { decouverte: '15 $ CAD', mensuel: '50 $ CAD', trimestriel: '130 $ CAD' };
+            }
+        }
+
+        function loadSavedPrices() {
+            const prices = getSavedPrices();
+            document.querySelector('[data-plan-id="decouverte"]').textContent = prices.decouverte;
+            document.querySelector('[data-plan-id="mensuel"]').textContent = prices.mensuel;
+            document.querySelector('[data-plan-id="trimestriel"]').textContent = prices.trimestriel;
+            syncUpdatedPricesToDropdown();
+        }
+
+        function selectPlanById(planId) {
+            const planSelect = document.getElementById('selectedPlan');
+            const indexMap = { decouverte: 0, mensuel: 1, trimestriel: 2 };
+            if (typeof indexMap[planId] === 'number') {
+                planSelect.selectedIndex = indexMap[planId];
+            }
+
+            const inscriptionSection = document.getElementById('inscription');
+            inscriptionSection.scrollIntoView({ behavior: 'smooth' });
+            resetRegistrationForm(false);
+
+            planSelect.classList.add('ring-4', 'ring-ember/40');
+            setTimeout(() => {
+                planSelect.classList.remove('ring-4', 'ring-ember/40');
+            }, 1400);
+        }
+
+        // Modification des tarifs réservée à l'Admin
+        const toggleEditPlansBtn = document.getElementById('toggle-edit-plans');
+        const editPlansLabel = document.getElementById('edit-plans-label');
+        let isEditingPlans = false;
+
+        toggleEditPlansBtn.addEventListener('click', () => {
+            if (!isAdminLoggedIn) return;
+            isEditingPlans = !isEditingPlans;
+            const priceElements = document.querySelectorAll('.plan-price');
+
+            if (isEditingPlans) {
+                editPlansLabel.textContent = "Enregistrer les tarifs";
+                toggleEditPlansBtn.classList.add('bg-ochre', 'text-volcanic', 'font-bold');
+                priceElements.forEach(el => {
+                    el.setAttribute('contenteditable', 'true');
+                    el.classList.add('bg-charcoal', 'px-2', 'rounded', 'border', 'border-ochre/60', 'outline-none');
+                });
+            } else {
+                editPlansLabel.textContent = "Modifier les tarifs (Admin)";
+                toggleEditPlansBtn.classList.remove('bg-ochre', 'text-volcanic', 'font-bold');
+                priceElements.forEach(el => {
+                    el.removeAttribute('contenteditable');
+                    el.classList.remove('bg-charcoal', 'px-2', 'rounded', 'border', 'border-ochre/60', 'outline-none');
+                });
+                syncUpdatedPricesToDropdown();
+            }
+        });
+
+        function syncUpdatedPricesToDropdown() {
+            const pDecouverte = document.querySelector('[data-plan-id="decouverte"]').textContent.trim();
+            const pMensuel = document.querySelector('[data-plan-id="mensuel"]').textContent.trim();
+            const pTrimestriel = document.querySelector('[data-plan-id="trimestriel"]').textContent.trim();
+
+            localStorage.setItem(STORAGE_KEYS.PRICES, JSON.stringify({
+                decouverte: pDecouverte,
+                mensuel: pMensuel,
+                trimestriel: pTrimestriel
+            }));
+
+            const planSelect = document.getElementById('selectedPlan');
+            planSelect.options[0].value = `Séance Découverte — 1 cours unique (${pDecouverte} / séance)`;
+            planSelect.options[0].textContent = `Séance Découverte — 1 cours unique (${pDecouverte} / séance)`;
+
+            planSelect.options[1].value = `Forfait Mensuel — 1x / semaine, 4 séances/mois (${pMensuel} / mois)`;
+            planSelect.options[1].textContent = `Forfait Mensuel — 1x / semaine, 4 séances/mois (${pMensuel} / mois)`;
+
+            planSelect.options[2].value = `Forfait Trimestriel / Session — 1x / semaine sur 3 mois (${pTrimestriel} / 3 mois)`;
+            planSelect.options[2].textContent = `Forfait Trimestriel / Session — 1x / semaine sur 3 mois (${pTrimestriel} / 3 mois)`;
+        }
+
+        // 5. Validation et soumission du formulaire de contact / inscription
+        const registrationForm = document.getElementById('registration-form');
+        const confirmationBox = document.getElementById('confirmation-box');
+        const formError = document.getElementById('form-error');
+        const formErrorText = document.getElementById('form-error-text');
+
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formError.classList.add('hidden');
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const experience = document.getElementById('experience').value;
+            const selectedPlan = document.getElementById('selectedPlan').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!fullName || !email || !phone) {
+                formErrorText.textContent = "Veuillez renseigner votre nom complet, votre courriel et votre numéro de téléphone.";
+                formError.classList.remove('hidden');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formErrorText.textContent = "Veuillez entrer une adresse courriel valide.";
+                formError.classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('conf-name').textContent = fullName;
+            document.getElementById('conf-plan').textContent = selectedPlan;
+            document.getElementById('conf-exp').textContent = experience;
+            document.getElementById('conf-email').textContent = email;
+            document.getElementById('conf-phone').textContent = phone;
+
+            const msgWrapper = document.getElementById('conf-msg-wrapper');
+            if (message) {
+                document.getElementById('conf-msg').textContent = `« ${message} »`;
+                msgWrapper.classList.remove('hidden');
+            } else {
+                msgWrapper.classList.add('hidden');
+            }
+
+            registrationForm.classList.add('hidden');
+            confirmationBox.classList.remove('hidden');
+        });
+
+        function resetRegistrationForm(clearFields = true) {
+            if (clearFields) {
+                registrationForm.reset();
+            }
+            confirmationBox.classList.add('hidden');
+            registrationForm.classList.remove('hidden');
+        }
+
+        // Initialisation au chargement de la page
+        loadSavedPrices();
+        renderSavedPhotos();
+        applyAdminUIState();
+    </script>
+</body>
+</html>
