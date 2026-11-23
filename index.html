@@ -1014,15 +1014,39 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <!-- Connexion Google sécurisée : aucun PIN local -->
+            <!-- Vue 1 : Connexion PIN -->
             <div id="admin-login-view" class="space-y-5">
                 <div class="flex items-center gap-3">
-                    <div class="w-11 h-11 rounded-xl bg-ochre/20 border border-ochre/40 flex items-center justify-center text-ochre text-lg"><i class="fa-solid fa-shield-halved"></i></div>
-                    <div><h3 class="font-cinzel font-bold text-xl text-parchment">Accès Administrateur</h3><p class="text-xs text-parchment/60">Connexion réservée à oritahititane.mtl@gmail.com</p></div>
+                    <div class="w-11 h-11 rounded-xl bg-ochre/20 border border-ochre/40 flex items-center justify-center text-ochre text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-cinzel font-bold text-xl text-parchment">Accès Administrateur</h3>
+                        <p class="text-xs text-parchment/60">Réservé à la gestion des photos et tarifs</p>
+                    </div>
                 </div>
-                <p id="google-admin-error" class="hidden text-xs text-ember"></p>
-                <div id="google-signin-button" class="flex justify-center py-3"></div>
-                <p class="text-[11px] text-parchment/45">L'accès est vérifié par Google et par le serveur Apps Script. Un simple code PIN dans le navigateur ne protège pas les données.</p>
+
+                <form id="admin-pin-form" class="space-y-4">
+                    <div>
+                        <label for="admin-pin-input" class="block text-xs font-oswald uppercase tracking-wider text-parchment/85 mb-2">
+                            Code PIN Administrateur
+                        </label>
+                        <input type="password" id="admin-pin-input" inputmode="numeric" maxlength="12" placeholder="••••" required
+                            class="w-full px-4 py-3 rounded-xl bg-volcanic border border-parchment/25 text-parchment text-center tracking-[0.5em] text-lg font-bold focus:outline-none focus:border-ochre">
+                        <p class="text-[11px] text-parchment/45 mt-2 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-ochre/70"></i>
+                            <span>Code PIN par défaut : <strong class="text-parchment/75">1234</strong> (modifiable une fois connecté).</span>
+                        </p>
+                    </div>
+
+                    <p id="admin-pin-error" class="hidden text-xs text-ember font-medium">
+                        Code PIN incorrect. Veuillez réessayer.
+                    </p>
+
+                    <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-ochre hover:bg-ochre/90 text-volcanic font-oswald font-bold uppercase tracking-wider text-sm transition-colors">
+                        Déverrouiller l'espace Admin
+                    </button>
+                </form>
             </div>
 
             <!-- Vue 2 : Paramètres Admin & Déconnexion (quand déjà connecté) -->
@@ -1037,11 +1061,23 @@
                     </div>
                 </div>
 
-                <div class="bg-volcanic border border-parchment/15 rounded-2xl p-4 space-y-3">
-                    <h4 class="font-cinzel text-parchment font-bold">Candidatures reçues</h4>
-                    <button type="button" onclick="loadAdminApplications()" class="w-full py-2.5 rounded-lg bg-ochre text-volcanic font-oswald font-bold uppercase text-xs">Actualiser les candidatures</button>
-                    <div id="admin-applications-list" class="space-y-2 text-xs text-parchment/80"><p>Connectez-vous puis actualisez pour afficher les demandes.</p></div>
-                </div>
+                <!-- Changer le code PIN -->
+                <form id="change-pin-form" class="bg-volcanic border border-parchment/15 rounded-2xl p-4 space-y-3">
+                    <label for="new-admin-pin" class="block text-xs font-oswald uppercase tracking-wider text-ochre">
+                        Modifier mon code PIN (4 à 8 chiffres)
+                    </label>
+                    <div class="flex gap-2">
+                        <input type="password" id="new-admin-pin" inputmode="numeric" minlength="4" maxlength="8" placeholder="Nouveau PIN" required
+                            class="flex-1 px-3.5 py-2 rounded-xl bg-charcoal border border-parchment/20 text-parchment text-sm focus:outline-none focus:border-ochre">
+                        <button type="submit" class="px-4 py-2 rounded-xl bg-ochre text-volcanic font-oswald font-bold uppercase text-xs">
+                            Enregistrer
+                        </button>
+                    </div>
+                    <p id="pin-changed-msg" class="hidden text-xs text-emerald-400">
+                        Nouveau code PIN enregistré avec succès.
+                    </p>
+                </form>
+
                 <div class="flex flex-col gap-2.5 pt-2">
                     <a href="#galerie" onclick="closeAdminModal()" class="w-full py-3 px-4 rounded-xl bg-charcoal hover:bg-tikiAsh border border-parchment/20 text-center font-oswald uppercase tracking-wider text-xs text-parchment">
                         Aller à la gestion de la galerie
@@ -1066,15 +1102,6 @@
             <p id="lightbox-caption" class="mt-4 font-cinzel text-parchment text-base sm:text-lg text-center"></p>
         </div>
     </div>
-
-    <!-- Configuration Google : remplacez ces deux valeurs après déploiement -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script>
-      window.OTT_CONFIG = {
-        APPS_SCRIPT_URL: "COLLER_ICI_URL_APPS_SCRIPT_EXEC", // URL de déploiement terminant par /exec
-        GOOGLE_CLIENT_ID: "COLLER_ICI_CLIENT_ID_OAUTH"
-      };
-    </script>
 
     <!-- =====================================================================
          JAVASCRIPT INTERACTIF (MODE ADMIN, GALERIE PERSISTANTE & FORFAITS)
@@ -1105,40 +1132,62 @@
             });
         });
 
-        // 2. Accès administrateur par Google Identity Services + vérification serveur
-        let isAdminLoggedIn = false;
-        let adminIdToken = null;
+        // 2. Gestion du Mode Administrateur (PIN + Session + Persistance)
+        let isAdminLoggedIn = sessionStorage.getItem(STORAGE_KEYS.SESSION) === 'true';
+
+        function getAdminPin() {
+            return localStorage.getItem(STORAGE_KEYS.PIN) || '1234';
+        }
+
         const adminModal = document.getElementById('admin-modal');
         const adminAccessBtn = document.getElementById('admin-access-btn');
         const adminLoginView = document.getElementById('admin-login-view');
         const adminSettingsView = document.getElementById('admin-settings-view');
+
         adminAccessBtn.addEventListener('click', () => {
-            adminLoginView.classList.toggle('hidden', isAdminLoggedIn);
-            adminSettingsView.classList.toggle('hidden', !isAdminLoggedIn);
-            adminModal.classList.remove('hidden');
-            if (!isAdminLoggedIn) renderGoogleSignIn();
-        });
-        function closeAdminModal(){ adminModal.classList.add('hidden'); }
-        function renderGoogleSignIn(){
-            const cfg=window.OTT_CONFIG||{}; const target=document.getElementById('google-signin-button');
-            if(!cfg.GOOGLE_CLIENT_ID || cfg.GOOGLE_CLIENT_ID.includes('COLLER_ICI')){
-                document.getElementById('google-admin-error').textContent='Ajoutez votre Client ID OAuth dans OTT_CONFIG.';
-                document.getElementById('google-admin-error').classList.remove('hidden'); return;
+            document.getElementById('admin-pin-error').classList.add('hidden');
+            document.getElementById('pin-changed-msg').classList.add('hidden');
+            if (isAdminLoggedIn) {
+                adminLoginView.classList.add('hidden');
+                adminSettingsView.classList.remove('hidden');
+            } else {
+                adminSettingsView.classList.add('hidden');
+                adminLoginView.classList.remove('hidden');
+                document.getElementById('admin-pin-input').value = '';
             }
-            const wait=setInterval(()=>{
-                if(window.google?.accounts?.id){clearInterval(wait);google.accounts.id.initialize({client_id:cfg.GOOGLE_CLIENT_ID,callback:handleGoogleCredential});
-                    target.innerHTML='';google.accounts.id.renderButton(target,{theme:'filled_black',size:'large',shape:'pill',text:'signin_with',locale:'fr'});}
-            },250); setTimeout(()=>clearInterval(wait),10000);
+            adminModal.classList.remove('hidden');
+        });
+
+        function closeAdminModal() {
+            adminModal.classList.add('hidden');
         }
-        async function handleGoogleCredential(response){
-            adminIdToken=response.credential;
-            try{await apiRequest({action:'list',idToken:adminIdToken});isAdminLoggedIn=true;applyAdminUIState();adminLoginView.classList.add('hidden');adminSettingsView.classList.remove('hidden');}
-            catch(err){adminIdToken=null;document.getElementById('google-admin-error').textContent=err.message||'Accès refusé.';document.getElementById('google-admin-error').classList.remove('hidden');}
-        }
+
+        document.getElementById('admin-pin-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const enteredPin = document.getElementById('admin-pin-input').value.trim();
+            if (enteredPin === getAdminPin()) {
+                isAdminLoggedIn = true;
+                sessionStorage.setItem(STORAGE_KEYS.SESSION, 'true');
+                applyAdminUIState();
+                closeAdminModal();
+            } else {
+                document.getElementById('admin-pin-error').classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('change-pin-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newPin = document.getElementById('new-admin-pin').value.trim();
+            if (newPin.length >= 4) {
+                localStorage.setItem(STORAGE_KEYS.PIN, newPin);
+                document.getElementById('new-admin-pin').value = '';
+                document.getElementById('pin-changed-msg').classList.remove('hidden');
+            }
+        });
 
         function logoutAdmin() {
             isAdminLoggedIn = false;
-            adminIdToken = null;
+            sessionStorage.removeItem(STORAGE_KEYS.SESSION);
             if (isEditingPlans) {
                 toggleEditPlansBtn.click();
             }
@@ -1477,18 +1526,46 @@
         const formError = document.getElementById('form-error');
         const formErrorText = document.getElementById('form-error-text');
 
-        registrationForm.addEventListener('submit', async function(e) {
-            e.preventDefault(); formError.classList.add('hidden');
-            const payload={action:'submit',fullName:document.getElementById('fullName').value.trim(),email:document.getElementById('email').value.trim(),phone:document.getElementById('phone').value.trim(),experience:document.getElementById('experience').value,selectedPlan:document.getElementById('selectedPlan').value,message:document.getElementById('message').value.trim()};
-            if(!payload.fullName||!payload.email||!payload.phone||!payload.experience||!payload.selectedPlan){formErrorText.textContent='Veuillez remplir tous les champs obligatoires.';formError.classList.remove('hidden');return;}
-            const btn=registrationForm.querySelector('button[type="submit"]');const original=btn.innerHTML;btn.disabled=true;btn.innerHTML='<span>Envoi en cours…</span>';
-            try{
-                const result=await apiRequest(payload);
-                document.getElementById('conf-name').textContent=payload.fullName;document.getElementById('conf-plan').textContent=payload.selectedPlan;document.getElementById('conf-exp').textContent=payload.experience;document.getElementById('conf-email').textContent=payload.email;document.getElementById('conf-phone').textContent=payload.phone;
-                const msgWrapper=document.getElementById('conf-msg-wrapper');if(payload.message){document.getElementById('conf-msg').textContent='« '+payload.message+' »';msgWrapper.classList.remove('hidden');}else msgWrapper.classList.add('hidden');
-                registrationForm.classList.add('hidden');confirmationBox.classList.remove('hidden');
-            }catch(err){formErrorText.textContent='Impossible d’envoyer la demande : '+(err.message||'veuillez réessayer.');formError.classList.remove('hidden');}
-            finally{btn.disabled=false;btn.innerHTML=original;}
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formError.classList.add('hidden');
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const experience = document.getElementById('experience').value;
+            const selectedPlan = document.getElementById('selectedPlan').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!fullName || !email || !phone) {
+                formErrorText.textContent = "Veuillez renseigner votre nom complet, votre courriel et votre numéro de téléphone.";
+                formError.classList.remove('hidden');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formErrorText.textContent = "Veuillez entrer une adresse courriel valide.";
+                formError.classList.remove('hidden');
+                return;
+            }
+
+            document.getElementById('conf-name').textContent = fullName;
+            document.getElementById('conf-plan').textContent = selectedPlan;
+            document.getElementById('conf-exp').textContent = experience;
+            document.getElementById('conf-email').textContent = email;
+            document.getElementById('conf-phone').textContent = phone;
+
+            const msgWrapper = document.getElementById('conf-msg-wrapper');
+            if (message) {
+                document.getElementById('conf-msg').textContent = `« ${message} »`;
+                msgWrapper.classList.remove('hidden');
+            } else {
+                msgWrapper.classList.add('hidden');
+            }
+
+            registrationForm.classList.add('hidden');
+            confirmationBox.classList.remove('hidden');
         });
 
         function resetRegistrationForm(clearFields = true) {
@@ -1497,35 +1574,6 @@
             }
             confirmationBox.classList.add('hidden');
             registrationForm.classList.remove('hidden');
-        }
-
-        // Communication Apps Script via iframe POST (évite les restrictions CORS de fetch)
-        function apiRequest(data){
-            return new Promise((resolve,reject)=>{
-                const endpoint=(window.OTT_CONFIG||{}).APPS_SCRIPT_URL;
-                if(!endpoint||endpoint.includes('COLLER_ICI')){reject(new Error('Ajoutez l’URL /exec de votre application Apps Script dans OTT_CONFIG.'));return;}
-                const iframe=document.createElement('iframe');iframe.name='ott_api_'+Date.now();iframe.style.display='none';
-                const form=document.createElement('form');form.method='POST';form.action=endpoint;form.target=iframe.name;form.style.display='none';
-                const input=document.createElement('input');input.name='payload';input.value=JSON.stringify(data);form.appendChild(input);
-                let done=false;const cleanup=()=>{window.removeEventListener('message',onMessage);form.remove();iframe.remove();};
-                const onMessage=(event)=>{if(done)return;const d=event.data;if(!d||typeof d!=='object'||!('ok'in d))return;done=true;cleanup();d.ok?resolve(d):reject(new Error(d.error||'Erreur du serveur.'));};
-                window.addEventListener('message',onMessage);document.body.appendChild(iframe);document.body.appendChild(form);form.submit();
-                setTimeout(()=>{if(!done){done=true;cleanup();reject(new Error('Délai dépassé. Vérifiez le déploiement Apps Script et son URL.'));}},25000);
-            });
-        }
-        async function adminApi(action,extra={}){if(!adminIdToken)throw new Error('Veuillez vous connecter avec Google.');return apiRequest({action,idToken:adminIdToken,...extra});}
-
-        async function loadAdminApplications(){
-            const box=document.getElementById('admin-applications-list');box.textContent='Chargement…';
-            try{const r=await adminApi('list');const rows=(r.applications||[]).slice(1);box.innerHTML='';
-                if(!rows.length){box.textContent='Aucune candidature pour le moment.';return;}
-                rows.forEach(row=>{const [id,date,name,email,phone,exp,plan,message,status]=row;const card=document.createElement('div');card.className='border border-parchment/15 rounded-xl p-3 space-y-2';
-                    const title=document.createElement('strong');title.textContent=(name||'Sans nom')+' — '+(status||'En attente');card.appendChild(title);
-                    const detail=document.createElement('p');detail.textContent=[email,phone,plan,exp].filter(Boolean).join(' · ');card.appendChild(detail);
-                    const controls=document.createElement('div');controls.className='flex flex-wrap gap-2';
-                    ['Acceptée','Refusée','En attente'].forEach(st=>{const b=document.createElement('button');b.type='button';b.textContent=st;b.className='px-2.5 py-1 rounded bg-charcoal border border-ochre/40';b.addEventListener('click',async()=>{try{await adminApi('status',{id,status:st,note:''});await loadAdminApplications();}catch(e){alert(e.message);}});controls.appendChild(b);});card.appendChild(controls);box.appendChild(card);
-                });
-            }catch(e){box.textContent='Erreur : '+e.message;}
         }
 
         // Initialisation au chargement de la page
